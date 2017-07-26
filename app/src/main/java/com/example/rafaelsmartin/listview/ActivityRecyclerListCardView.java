@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static java.security.AccessController.getContext;
 
@@ -19,26 +20,21 @@ import static java.security.AccessController.getContext;
 public class ActivityRecyclerListCardView extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
 
     MyRecyclerViewAdapter adapter;
+    private List<Data> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_list_card_view);
 
-        // data to populate the RecyclerView with
-        ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Horse");
-        animalNames.add("Cow");
-        animalNames.add("Camel");
-        animalNames.add("Sheep");
-        animalNames.add("Goat");
-
-
-        //
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.LstOpciones);
+        data = createData();
+
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        adapter = new MyRecyclerViewAdapter(this, animalNames);
+        adapter = new MyRecyclerViewAdapter(this, data);
+        adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         adapter.notifyDataSetChanged();
 
         // set up the RecyclerView
@@ -49,8 +45,21 @@ public class ActivityRecyclerListCardView extends AppCompatActivity implements M
 //        recyclerView.setAdapter(adapter);
     }
 
+    public List<Data> createData() {
+        // data to populate the RecyclerView with
+        List<Data> data = new ArrayList<>();
+        data.add(new Data(R.mipmap.ic_launcher, "Voice Translate"));
+        data.add(new Data(R.mipmap.ic_launcher, "Dictionary"));
+        data.add(new Data(R.mipmap.ic_launcher, "Travel Course"));
+        data.add(new Data(R.mipmap.ic_launcher, "Vocabulary"));
+        data.add(new Data(R.mipmap.ic_launcher, "Categories"));
+        data.add(new Data(R.mipmap.ic_launcher, "Grammar"));
+        return data;
+    }
+
+
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "You clicked " + adapter.getItemId(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
     }
 }

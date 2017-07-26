@@ -48,12 +48,12 @@ public class ActivityRecyclerListCardView extends AppCompatActivity implements M
     public List<Data> createData() {
         // data to populate the RecyclerView with
         List<Data> data = new ArrayList<>();
-        data.add(new Data(R.mipmap.ic_launcher, "Voice Translate"));
-        data.add(new Data(R.mipmap.ic_launcher, "Dictionary"));
-        data.add(new Data(R.mipmap.ic_launcher, "Travel Course"));
-        data.add(new Data(R.mipmap.ic_launcher, "Vocabulary"));
-        data.add(new Data(R.mipmap.ic_launcher, "Categories"));
-        data.add(new Data(R.mipmap.ic_launcher, "Grammar"));
+        data.add(new Data(R.mipmap.ic_launcher_round, "Ficha\nPrimera"));
+        data.add(new Data(R.mipmap.ic_launcher, "Ficha segunda"));
+        data.add(new Data(R.mipmap.ic_launcher, "Ficha\nTercera"));
+        data.add(new Data(R.mipmap.ic_launcher, "Cuarta"));
+        data.add(new Data(R.mipmap.ic_launcher, "Quinta"));
+        data.add(new Data(R.mipmap.ic_launcher_round, "Sexta"));
         return data;
     }
 
